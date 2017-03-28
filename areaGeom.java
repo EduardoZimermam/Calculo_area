@@ -16,12 +16,14 @@ class formGeo{
 			return(raio);
 		}
 
-		void areaCirc(double raio){
+		void areaCirc(){
+			double raio = leCirc();
+
 			double area = Math.PI *(raio*raio);
 		}
 	}
 
-	class quadrado extends formGeo{
+	public class quadrado extends formGeo{
 
 		double leQuad(){
 			double lado;
@@ -32,31 +34,38 @@ class formGeo{
 			return(lado);
 		}
 
-		void areaQuad(double lado){
+		void areaQuad(){
+			double lado = leQuad();
 
 			double area = lado * lado;
 		}
 	}
 
-	class retangulo extends formGeo{
+	public class retangulo extends formGeo{
 
-		double areaRet(double base, double altura){
-
-			return(base*altura);
-		}
+		double base, altura;
 
 		void leRet(){
-			
-			double base, altura, area;
 
 			System.out.println("\n\n\n\n\nDigite a base do retangulo: ");
 			base = in.nextDouble();
 
 			System.out.println("\nDigite o lado do quadrado: ");
 			altura = in.nextDouble();
-
-			area = areaRet(base, altura);
 		}	
+
+		void areaRet(){
+
+			area = base * altura;
+
+		}
+	}
+
+	public double imprimeArea(){
+
+		System.out.println("A área da forma geométrica é:" +area);
+
+		return(0);
 	}
 }
 
@@ -78,20 +87,23 @@ class areaGeo{
 				case 1:
 					formGeo objCirc = new circulo();
 
+					objCirc.areaCirc();
+					objCirc.imprimeArea();
+
 					break;
 
 				case 2:
-					formGeo objQuad = new quadrado();
+					formGeo objQuad = new formGeo();
 
 					break;
 
 				case 3:
-					formGeo objRet = new retangulo();
+					formGeo objRet = new formGeo();
 
 					break;
 
 				default:
-					println("Opção inválida!!");
+					System.out.println("Opção inválida!!");
 			}
 		}
 	}
